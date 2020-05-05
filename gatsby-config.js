@@ -18,5 +18,13 @@ module.exports = {
       },
     },
     `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-wordpress`,
+      options :{
+        baseUrl: `similarwebsites.info`,
+        protocol : `https`,
+        hostingWPCOM: false,
+      },
+  },
   ]
 }
