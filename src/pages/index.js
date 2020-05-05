@@ -6,11 +6,11 @@ export default ({data}) =>{
   console.log(data);
   return (
     <PrimaryLayout>
-      {data.allMarkdownRemark.nodes.map((node)=>(
-        <Post  image= {node.frontmatter.image}
-        title= {node.frontmatter.title}
+      {data.allWordpressPost.nodes.map((node)=>(
+        <Post  image= {node.featured_media.source_url}
+        title= {node.title}
          excerpt= {node.excerpt}
-         readMore= {node.fields.slug}
+         readMore= {node.slug}
          />
       ))}
     
@@ -20,20 +20,15 @@ export default ({data}) =>{
   
 export const query = graphql `
 {
-  allMarkdownRemark{
+  allWordpressPost{
     nodes {
-      frontmatter{
-        title
-        date
-        Keywords
-        image
-      }
+      slug
+      title
       excerpt
-      html
-      fields{
-        slug
+      featured_media {
+        source_url
       }
-    } 
+    }
   }
 }
 `
